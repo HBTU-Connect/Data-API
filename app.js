@@ -18,9 +18,9 @@ app.use(dataRoute);
 //app listening on port 8080
 //database connected to localhost
 mongoose
-    .connect('mongodb://localhost:27017/data', { useNewUrlParser: true })
+    .connect(process.env.MONGO_URI, { useNewUrlParser: true })
     .then( result => {
-        app.listen(8080);
+        app.listen(process.env.PORT || 3000 );
         console.log('connected');
     })
     .catch( err => {
